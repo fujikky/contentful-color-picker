@@ -1,0 +1,18 @@
+html,
+body,
+div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.color-picker-container {
+  display: flex;
+}
+.color-picker-color {
+  height: 2.2rem;
+  margin-right: 8px;
+}

@@ -1,5 +1,9 @@
 {
   "extends": [
-    "config:base"
-  ]
+    "config:base",
+    "group:definitelyTyped",
+    "packages:linters",
+    ":maintainLockFilesWeekly"
+  ],
+  "automerge": true
 }

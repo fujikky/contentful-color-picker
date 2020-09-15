@@ -58,6 +58,7 @@ export const App: React.FC<Props> = ({ sdk }) => {
         maxLength={7}
       />
       <TextInput
+        testId="my-field"
         width="large"
         type="text"
         value={value}

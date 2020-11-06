@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "@contentful/contentful-extension-scripts": "0.20.0",
+    "@contentful/contentful-extension-scripts": "0.20.1",
     "@contentful/eslint-config-extension": "0.4.0",
     "@babel/core": "7.12.3",
     "@babel/plugin-transform-runtime": "7.12.1",

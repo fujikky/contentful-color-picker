@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import { render } from 'react-dom';
-import { TextInput } from '@contentful/forma-36-react-components';
 import { init, FieldExtensionSDK } from 'contentful-ui-extensions-sdk';
-import '@contentful/forma-36-react-components/dist/styles.css';
 import './index.css';
 
 const colorHex = /^#[0-9a-f]{6}$/i;
@@ -27,7 +25,7 @@ export const App: React.FC<Props> = ({ sdk }) => {
   }, [sdk, onExternalChange]);
 
   const handleChange = React.useCallback<React.ChangeEventHandler<HTMLInputElement>>(
-    e => {
+    (e) => {
       const value = e.currentTarget.value;
       setValue(value);
       sdk.field.setInvalid(!colorHex.test(value));
@@ -36,7 +34,7 @@ export const App: React.FC<Props> = ({ sdk }) => {
   );
 
   const handleBlur = React.useCallback<React.FocusEventHandler<HTMLInputElement>>(
-    async e => {
+    async (e) => {
       const value = e.currentTarget.value;
       if (value) {
         await sdk.field.setValue(value);
@@ -57,9 +55,9 @@ export const App: React.FC<Props> = ({ sdk }) => {
         onBlur={handleBlur}
         maxLength={7}
       />
-      <TextInput
-        testId="my-field"
-        width="large"
+      <input
+        data-test-id="my-field"
+        className="color-picker-input"
         type="text"
         value={value}
         onChange={handleChange}
@@ -70,6 +68,9 @@ export const App: React.FC<Props> = ({ sdk }) => {
   );
 };
 
-init(sdk => {
-  render(<App sdk={sdk as FieldExtensionSDK} />, document.getElementById('root'));
-});
+init(
+  (sdk) => {
+    render(<App sdk={sdk as FieldExtensionSDK} />, document.getElementById('root'));
+  },
+  { supressIframeWarning: true }
+);

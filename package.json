@@ -13,7 +13,7 @@
     "cssnano": "4.1.10",
     "contentful-cli": "1.5.35",
     "eslint": "7.21.0",
-    "typescript": "4.2.2",
+    "typescript": "4.2.3",
     "@types/jest": "26.0.20",
     "@types/react": "16.8.6",
     "@types/react-dom": "16.8.4",

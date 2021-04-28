@@ -10,7 +10,7 @@
     "@babel/preset-env": "7.13.15",
     "@babel/preset-react": "7.13.13",
     "@testing-library/react": "11.2.6",
-    "cssnano": "5.0.1",
+    "cssnano": "5.0.2",
     "contentful-cli": "1.6.13",
     "eslint": "7.25.0",
     "typescript": "4.2.4",

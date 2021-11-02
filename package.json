@@ -11,7 +11,7 @@
     "@babel/preset-react": "7.16.0",
     "@testing-library/react": "12.1.2",
     "cssnano": "5.0.8",
-    "contentful-cli": "1.9.30",
+    "contentful-cli": "1.9.31",
     "eslint": "7.32.0",
     "typescript": "4.4.4",
     "@types/jest": "27.0.2",

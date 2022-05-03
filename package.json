@@ -9,7 +9,7 @@
     "@babel/plugin-transform-runtime": "7.17.10",
     "@babel/preset-env": "7.17.10",
     "@babel/preset-react": "7.16.7",
-    "@testing-library/react": "13.1.1",
+    "@testing-library/react": "13.2.0",
     "cssnano": "5.1.7",
     "contentful-cli": "1.12.29",
     "eslint": "7.32.0",

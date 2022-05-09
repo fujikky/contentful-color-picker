@@ -33,7 +33,7 @@
     "help": "contentful-extension-scripts help"
   },
   "dependencies": {
-    "contentful-ui-extensions-sdk": "4.3.7",
+    "contentful-ui-extensions-sdk": "4.4.0",
     "react": "18.1.0",
     "react-dom": "18.1.0"
   }

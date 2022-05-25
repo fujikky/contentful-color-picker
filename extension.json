@@ -1,9 +1,0 @@
-{
-  "id": "color-picker",
-  "name": "Color Picker",
-  "srcdoc": "./build/index.html",
-  "fieldTypes": [
-    "Symbol",
-    "Text"
-  ]
-}

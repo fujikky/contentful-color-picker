@@ -1,5 +1,5 @@
 import { FieldExtensionSDK } from "@contentful/app-sdk";
-import { Stack, TextInput } from "@contentful/f36-components";
+import { FormControl, Stack, TextInput } from "@contentful/f36-components";
 import { useSDK } from "@contentful/react-apps-toolkit";
 import { css } from "emotion";
 import {
@@ -17,30 +17,37 @@ const Field = () => {
   const sdk = useSDK<FieldExtensionSDK>();
 
   const [value, setValue] = useState<string>(() => sdk.field.getValue() || "");
+  const [isInvalid, setIsInvalid] = useState(false);
 
-  const onExternalChange = useCallback((value: string) => {
-    setValue(value);
-  }, []);
+  const validate = useCallback(
+    (value: string) => {
+      const isInvalid = !COLOR_HEX.test(value);
+      sdk.field.setInvalid(isInvalid);
+      setIsInvalid(isInvalid);
+    },
+    [sdk.field]
+  );
 
-  useEffect(() => {
-    sdk.window.startAutoResizer();
-    const detach = sdk.field.onValueChanged(onExternalChange);
-
-    return () => detach();
-  }, [sdk, onExternalChange]);
+  const onExternalChange = useCallback(
+    (value: string) => {
+      setValue(value);
+      validate(value);
+    },
+    [validate]
+  );
 
   const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (e) => {
       const value = e.currentTarget.value;
       setValue(value);
-      sdk.field.setInvalid(!COLOR_HEX.test(value));
+      validate(value);
     },
-    [sdk.field]
+    [validate]
   );
 
   const handleBlur = useCallback<FocusEventHandler<HTMLInputElement>>(
     async (e) => {
-      const value = e.currentTarget.value;
+      const value = e.currentTarget.value || "";
       if (value) {
         await sdk.field.setValue(value);
       } else {
@@ -50,27 +57,46 @@ const Field = () => {
     [sdk.field]
   );
 
+  useEffect(() => {
+    sdk.window.startAutoResizer();
+    const detach = sdk.field.onValueChanged(onExternalChange);
+
+    return () => detach();
+  }, [sdk, onExternalChange]);
+
   return (
-    <Stack flexDirection="column">
-      <TextInput.Group>
-        <TextInput
-          type="color"
-          value={value}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          maxLength={7}
-          className={css({ width: "45px", padding: "2px 5px" })}
-        />
-        <TextInput
-          testId="my-field"
-          type="text"
-          value={value}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          pattern={COLOR_PATTERN}
-        />
-      </TextInput.Group>
-    </Stack>
+    <FormControl isInvalid={isInvalid}>
+      <Stack flexDirection="column">
+        <TextInput.Group>
+          <TextInput
+            type="color"
+            value={value}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            maxLength={7}
+            className={css({
+              width: "45px",
+              padding: "2px 5px",
+              ":focus": { boxShadow: "none" },
+            })}
+          />
+          <TextInput
+            testId="my-field"
+            type="text"
+            value={value}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            pattern={COLOR_PATTERN}
+            className={css({ ":focus": { boxShadow: "none" } })}
+          />
+        </TextInput.Group>
+      </Stack>
+      {isInvalid ? (
+        <FormControl.ValidationMessage>
+          Invalid color pattern
+        </FormControl.ValidationMessage>
+      ) : null}
+    </FormControl>
   );
 };
 

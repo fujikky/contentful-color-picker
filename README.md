@@ -6,7 +6,7 @@ A very simple color picker to display in the Short Text field of Contentful.
 
 ## Installation
 1. clone or download repository
-2. `npm install`
+2. `npm install && npm run build`
 3. `npm run create-app-definition`
 4. `npm run upload`
 5. Install the app to your organization.

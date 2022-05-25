@@ -2,7 +2,7 @@
 The Contentful Color Picker allows you to set hex value in text fields using the color picker built into the browser.
 
 ## Installation
-1. clone or downlaod repository
+1. clone or download repository
 2. `npm install`
 3. `npm run create-app-definition`
 4. `npm run upload`

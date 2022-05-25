@@ -1,5 +1,5 @@
 {
-  "name": "contentful-color-picker-ui-extension",
+  "name": "contentful-color-picker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -29,9 +29,6 @@
     "upload": "contentful-app-scripts upload --bundle-dir ./build",
     "upload-ci": "contentful-app-scripts upload --ci --bundle-dir ./build  --organization-id $CONTENTFUL_ORG_ID --definition-id $CONTENTFUL_APP_DEF_ID --token $CONTENTFUL_ACCESS_TOKEN"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -54,6 +51,7 @@
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.3",
     "cross-env": "7.0.3",
+    "eslint": "8.16.0",
     "eslint-config-timetree": "1.7.0",
     "jest-watch-typeahead": "1.1.0",
     "npm-run-all": "4.1.5",

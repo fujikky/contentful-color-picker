@@ -1,5 +1,8 @@
 ## Contentful Color Picker
-The Contentful Color Picker allows you to set hex value in text fields using the color picker built into the browser.
+
+A very simple color picker to display in the Short Text field of Contentful.
+
+<img src="docs/image.png" width="301" height="346">
 
 ## Installation
 1. clone or download repository

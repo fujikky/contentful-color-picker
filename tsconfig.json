@@ -1,13 +1,8 @@
 {
+  "extends": "@tsconfig/create-react-app/tsconfig.json",
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
-    "strict": true,
-    "jsx": "react",
-    "rootDir": "./src",
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "lib": ["dom", "es2015"],
-    "resolveJsonModule": true
-  }
+    "lib": ["dom", "dom.iterable", "esnext"]
+  },
+  "include": ["src", "test"]
 }

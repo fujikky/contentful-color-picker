@@ -1,76 +1,21 @@
-/* eslint-disable react/prop-types */
-import * as React from 'react';
-import { render } from 'react-dom';
-import { init, FieldExtensionSDK } from 'contentful-ui-extensions-sdk';
-import './index.css';
+import { GlobalStyles } from "@contentful/f36-components";
+import { SDKProvider } from "@contentful/react-apps-toolkit";
+import { render } from "react-dom";
 
-const colorHex = /^#[0-9a-f]{6}$/i;
+import App from "./App";
+import LocalhostWarning from "./components/LocalhostWarning";
 
-type Props = {
-  sdk: FieldExtensionSDK;
-};
+const root = document.getElementById("root");
 
-export const App: React.FC<Props> = ({ sdk }) => {
-  const [value, setValue] = React.useState<string>(() => sdk.field.getValue() || '');
-
-  const onExternalChange = React.useCallback((value: string) => {
-    setValue(value);
-  }, []);
-
-  React.useEffect(() => {
-    sdk.window.startAutoResizer();
-    const detach = sdk.field.onValueChanged(onExternalChange);
-
-    return () => detach();
-  }, [sdk, onExternalChange]);
-
-  const handleChange = React.useCallback<React.ChangeEventHandler<HTMLInputElement>>(
-    (e) => {
-      const value = e.currentTarget.value;
-      setValue(value);
-      sdk.field.setInvalid(!colorHex.test(value));
-    },
-    [sdk.field]
+if (process.env.NODE_ENV === "development" && window.self === window.top) {
+  // You can remove this if block before deploying your app
+  render(<LocalhostWarning />, root);
+} else {
+  render(
+    <SDKProvider>
+      <GlobalStyles />
+      <App />
+    </SDKProvider>,
+    root
   );
-
-  const handleBlur = React.useCallback<React.FocusEventHandler<HTMLInputElement>>(
-    async (e) => {
-      const value = e.currentTarget.value;
-      if (value) {
-        await sdk.field.setValue(value);
-      } else {
-        await sdk.field.removeValue();
-      }
-    },
-    [sdk.field]
-  );
-
-  return (
-    <div className="color-picker-container">
-      <input
-        type="color"
-        className="color-picker-color"
-        value={value}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        maxLength={7}
-      />
-      <input
-        data-test-id="my-field"
-        className="color-picker-input"
-        type="text"
-        value={value}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        pattern={colorHex.toString()}
-      />
-    </div>
-  );
-};
-
-init(
-  (sdk) => {
-    render(<App sdk={sdk as FieldExtensionSDK} />, document.getElementById('root'));
-  },
-  { supressIframeWarning: true }
-);
+}

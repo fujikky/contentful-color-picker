@@ -1,4 +1,4 @@
-name: Run lint and test
+name: CI
 
 on: [push]
 

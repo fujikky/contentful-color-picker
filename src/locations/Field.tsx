@@ -21,7 +21,7 @@ const Field = () => {
 
   const validate = useCallback(
     (value: string) => {
-      const isInvalid = !COLOR_HEX.test(value);
+      const isInvalid = value ? !COLOR_HEX.test(value) : false;
       sdk.field.setInvalid(isInvalid);
       setIsInvalid(isInvalid);
     },
@@ -70,7 +70,7 @@ const Field = () => {
         <TextInput.Group>
           <TextInput
             type="color"
-            value={value}
+            value={value ? value : "#ffffff"}
             onChange={handleChange}
             onBlur={handleBlur}
             maxLength={7}

@@ -1,10 +1,10 @@
 {
-  "extends": [
-    "config:base",
-    "group:definitelyTyped",
-    "packages:linters",
-    ":maintainLockFilesWeekly"
-  ],
-  "ignoreDeps": ["@types/react", "@types/react-dom"],
-  "automerge": true
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base", "schedule:weekly", ":maintainLockFilesWeekly"],
+  "postUpdateOptions": ["yarnDedupeHighest"],
+  "automerge": true,
+  "packageRules": [
+    { "depTypeList": ["dependencies"], "groupName": "dependencies" },
+    { "depTypeList": ["devDependencies"], "groupName": "devDependencies" }
+  ]
 }

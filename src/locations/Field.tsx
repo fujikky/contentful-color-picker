@@ -1,4 +1,4 @@
-import { FieldExtensionSDK } from "@contentful/app-sdk";
+import type { FieldExtensionSDK } from "@contentful/app-sdk";
 import { FormControl, Stack, TextInput } from "@contentful/f36-components";
 import { useSDK } from "@contentful/react-apps-toolkit";
 import { css } from "emotion";

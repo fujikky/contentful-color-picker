@@ -25,7 +25,7 @@ const Field = () => {
       sdk.field.setInvalid(isInvalid);
       setIsInvalid(isInvalid);
     },
-    [sdk.field]
+    [sdk.field],
   );
 
   const onExternalChange = useCallback(
@@ -33,7 +33,7 @@ const Field = () => {
       setValue(value);
       validate(value);
     },
-    [validate]
+    [validate],
   );
 
   const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
@@ -42,7 +42,7 @@ const Field = () => {
       setValue(value);
       validate(value);
     },
-    [validate]
+    [validate],
   );
 
   const handleBlur = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -54,7 +54,7 @@ const Field = () => {
         await sdk.field.removeValue();
       }
     },
-    [sdk.field]
+    [sdk.field],
   );
 
   useEffect(() => {

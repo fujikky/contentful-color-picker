@@ -12,7 +12,7 @@ const App = () => {
   const sdk = useSDK();
 
   const Component = useMemo(() => {
-    // eslint-disable-next-line functional/no-loop-statement
+    // eslint-disable-next-line functional/no-loop-statements
     for (const [location, component] of Object.entries(
       ComponentLocationSettings
     )) {
@@ -20,6 +20,7 @@ const App = () => {
         return component;
       }
     }
+    return null;
   }, [sdk.location]);
 
   return Component ? <Component /> : null;

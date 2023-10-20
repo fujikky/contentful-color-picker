@@ -14,7 +14,7 @@ const App = () => {
   const Component = useMemo(() => {
     // eslint-disable-next-line functional/no-loop-statements
     for (const [location, component] of Object.entries(
-      ComponentLocationSettings
+      ComponentLocationSettings,
     )) {
       if (sdk.location.is(location)) {
         return component;

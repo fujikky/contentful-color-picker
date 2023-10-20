@@ -19,9 +19,7 @@ describe("Field component", () => {
 
     expect(mockFieldSdk.field.getValue).toHaveBeenCalled();
     expect(mockFieldSdk.field.onValueChanged).toHaveBeenCalled();
-    expect((getByTestId("my-field") as HTMLInputElement).value).toEqual(
-      "#ff0000"
-    );
+    expect((getByTestId("my-field") as HTMLInputElement).value).toBe("#ff0000");
   });
 
   it("should call starstartAutoResizer", () => {

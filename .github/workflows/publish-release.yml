@@ -13,7 +13,7 @@ jobs:
           node-version-file: .node-version
           cache: npm
       - run: npm ci
-      - uses: release-drafter/release-drafter@v5
+      - uses: release-drafter/release-drafter@v6
         id: release_drafter
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -34,7 +34,7 @@ jobs:
           CONTENTFUL_APP_DEF_ID: ${{ secrets.CONTENTFUL_APP_DEF_ID }}
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
           CONTENTFUL_BUNDLE_COMMENT: ${{ steps.release_drafter.outputs.tag_name }}
-      - uses: release-drafter/release-drafter@v5
+      - uses: release-drafter/release-drafter@v6
         id: release_drafter_publish
         with:
           publish: true

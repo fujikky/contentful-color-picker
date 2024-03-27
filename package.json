@@ -44,19 +44,19 @@
   "devDependencies": {
     "@contentful/app-scripts": "1.17.0",
     "@testing-library/jest-dom": "6.4.2",
-    "@testing-library/react": "12.1.5",
-    "@tsconfig/create-react-app": "1.0.3",
+    "@testing-library/react": "14.2.2",
+    "@tsconfig/create-react-app": "2.0.4",
     "@types/jest": "29.5.12",
-    "@types/node": "18.19.26",
+    "@types/node": "20.11.30",
     "@types/react": "18.2.69",
     "@types/react-dom": "18.2.22",
     "cross-env": "7.0.3",
     "eslint": "8.57.0",
     "eslint-config-timetree": "1.12.0",
     "jest-watch-typeahead": "2.2.2",
-    "npm-run-all2": "5.0.2",
+    "npm-run-all2": "6.1.2",
     "prettier": "3.2.5",
-    "typescript": "4.9.5"
+    "typescript": "5.4.3"
   },
   "homepage": "."
 }
